@@ -1,0 +1,475 @@
+{
+  "id": "2e6464a8-1ab2-45dd-8cb3-84cb27c258b0",
+  "version": "2.0",
+  "name": "Consult",
+  "url": "https://www4.receita.pb.gov.br/atf/",
+  "tests": [{
+    "id": "9a4f1516-b092-435e-b3ad-a6d3e21d30a1",
+    "name": "Consult",
+    "commands": [{
+      "id": "5cc60b78-38c1-43a1-88e8-eae3859e2845",
+      "comment": "",
+      "command": "open",
+      "target": "https://www4.receita.pb.gov.br/atf/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f21ef791-c936-4238-bae5-42432314ec4b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1210x741",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c1122342-be0b-4fb1-905f-d93605949ce2",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "index=1",
+      "targets": [
+        ["index=1"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c87d462-b146-4fd3-a913-6a53d320bdff",
+      "comment": "",
+      "command": "click",
+      "target": "name=btnAvancar",
+      "targets": [
+        ["name=btnAvancar", "name"],
+        ["css=.botoes", "css:finder"],
+        ["xpath=//input[@name='btnAvancar']", "xpath:attributes"],
+        ["xpath=//td[2]/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "18d1c82d-e139-4d81-a919-59510495b2fa",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "index=0",
+      "targets": [
+        ["index=0"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ce30e68-f33b-474e-847b-5acfcf93c698",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=NFC-e",
+      "targets": [
+        ["linkText=NFC-e", "linkText"],
+        ["css=li:nth-child(32) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'NFC-e')]", "xpath:link"],
+        ["xpath=//body[@id='atfMenu']/ul/li[32]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './SEGf_Menu.jsp?caminho=32&sqId=57048')]", "xpath:href"],
+        ["xpath=//li[32]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'NFC-e')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "125ae6fa-9490-40fc-a9cf-374b99146ab4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Consulta por Emitente",
+      "targets": [
+        ["linkText=Consulta por Emitente", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Consulta por Emitente')]", "xpath:link"],
+        ["xpath=//body[@id='atfMenu']/ul[2]/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '../fis/FISf_ConsultaGenericaEmitenteNFCe.do?limparSessao=true')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Consulta por Emitente')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "99924e2a-36c8-40a0-b5bf-6c7a5a0d8737",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "relative=parent",
+      "targets": [
+        ["relative=parent"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ff299b5-549c-4d7d-9354-9f59820eae98",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "index=1",
+      "targets": [
+        ["index=1"]
+      ],
+      "value": ""
+    }, {
+      "id": "cdf62011-b10b-4eae-9fbb-d053b3a43a10",
+      "comment": "",
+      "command": "click",
+      "target": "name=edtDtInicial",
+      "targets": [
+        ["name=edtDtInicial", "name"],
+        ["css=.tdPadrao:nth-child(3) > .caixas:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='edtDtInicial']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "50369c3a-2c33-41c0-9e70-2111f8d70f79",
+      "comment": "",
+      "command": "type",
+      "target": "name=edtDtInicial",
+      "targets": [
+        ["name=edtDtInicial", "name"],
+        ["css=.tdPadrao:nth-child(3) > .caixas:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='edtDtInicial']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "28/09/2019"
+    }, {
+      "id": "5634c4f1-dc8d-49d8-b074-59253e806ef0",
+      "comment": "",
+      "command": "type",
+      "target": "name=edtDtFinal",
+      "targets": [
+        ["name=edtDtFinal", "name"],
+        ["css=.tdPadrao:nth-child(3) > .caixas:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='edtDtFinal']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "280"
+    }, {
+      "id": "0854280d-f282-4050-a829-dece0bda1dbe",
+      "comment": "",
+      "command": "click",
+      "target": "name=edtDtInicial",
+      "targets": [
+        ["name=edtDtInicial", "name"],
+        ["css=.tdPadrao:nth-child(3) > .caixas:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='edtDtInicial']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "36966b3a-075b-4034-a36a-924d9b1ebf85",
+      "comment": "",
+      "command": "click",
+      "target": "name=edtDtInicial",
+      "targets": [
+        ["name=edtDtInicial", "name"],
+        ["css=.tdPadrao:nth-child(3) > .caixas:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='edtDtInicial']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "12dc53a3-3ff3-477f-b72d-9b16798b3136",
+      "comment": "",
+      "command": "click",
+      "target": "name=edtDtInicial",
+      "targets": [
+        ["name=edtDtInicial", "name"],
+        ["css=.tdPadrao:nth-child(3) > .caixas:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='edtDtInicial']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "951775ff-f163-44d7-be1d-c0ae64dd4b73",
+      "comment": "",
+      "command": "type",
+      "target": "name=edtDtInicial",
+      "targets": [
+        ["name=edtDtInicial", "name"],
+        ["css=.tdPadrao:nth-child(3) > .caixas:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='edtDtInicial']", "xpath:attributes"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "28/08/2019"
+    }, {
+      "id": "65bef27f-73e7-4bf8-886a-90b5fd967d36",
+      "comment": "",
+      "command": "type",
+      "target": "name=edtDtFinal",
+      "targets": [
+        ["name=edtDtFinal", "name"],
+        ["css=.tdPadrao:nth-child(3) > .caixas:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='edtDtFinal']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "28/08/2019"
+    }, {
+      "id": "e0c0ea45-fba8-436a-8e72-8c2152faf675",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "index=0",
+      "targets": [
+        ["index=0"]
+      ],
+      "value": ""
+    }, {
+      "id": "36e915e7-ef74-4ddf-8fe6-5c809b6eb45f",
+      "comment": "",
+      "command": "click",
+      "target": "name=hidNrDocumentocmpEmit",
+      "targets": [
+        ["name=hidNrDocumentocmpEmit", "name"],
+        ["css=.tdPadrao:nth-child(1) > td > .caixas", "css:finder"],
+        ["xpath=//input[@name='hidNrDocumentocmpEmit']", "xpath:attributes"],
+        ["xpath=//div[@id='Layer1']/table/tbody/tr/td/form/table/tbody/tr/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e567e2a6-877a-41d0-8b4c-1c74053f6e27",
+      "comment": "",
+      "command": "type",
+      "target": "name=hidNrDocumentocmpEmit",
+      "targets": [
+        ["name=hidNrDocumentocmpEmit", "name"],
+        ["css=.tdPadrao:nth-child(1) > td > .caixas", "css:finder"],
+        ["xpath=//input[@name='hidNrDocumentocmpEmit']", "xpath:attributes"],
+        ["xpath=//div[@id='Layer1']/table/tbody/tr/td/form/table/tbody/tr/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "16.150.180-0"
+    }, {
+      "id": "64dae32f-3e90-41bf-8d42-624d8ec8bad4",
+      "comment": "",
+      "command": "click",
+      "target": "name=btnPesquisar",
+      "targets": [
+        ["name=btnPesquisar", "name"],
+        ["css=.botoes", "css:finder"],
+        ["xpath=//input[@name='btnPesquisar']", "xpath:attributes"],
+        ["xpath=//div[@id='Layer1']/table/tbody/tr/td/form/table/tbody/tr/td[3]/input", "xpath:idRelative"],
+        ["xpath=//td[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "70b4173d-46aa-419b-91be-994a8ad62f15",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "relative=parent",
+      "targets": [
+        ["relative=parent"]
+      ],
+      "value": ""
+    }, {
+      "id": "cd7067d4-e9c6-4080-8bac-77353fd31e8f",
+      "comment": "",
+      "command": "select",
+      "target": "name=cmbTpExibicao",
+      "targets": [],
+      "value": "label=XML"
+    }, {
+      "id": "046c9744-4076-43a7-b43d-b1dfb9d02673",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "name=cmbTpExibicao",
+      "targets": [
+        ["name=cmbTpExibicao", "name"],
+        ["css=.caixas:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='cmbTpExibicao']", "xpath:attributes"],
+        ["xpath=//tr[12]/td/select", "xpath:position"],
+        ["xpath=//select[contains(.,'HTML\nTXT\nXML')]", "xpath:innerText"]
+      ],
+      "value": "-590.671875,-528"
+    }, {
+      "id": "15f17b5e-ad1e-42d5-9556-eaf5e0ade6da",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "name=cmbTpExibicao",
+      "targets": [
+        ["name=cmbTpExibicao", "name"],
+        ["css=.caixas:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='cmbTpExibicao']", "xpath:attributes"],
+        ["xpath=//tr[12]/td/select", "xpath:position"],
+        ["xpath=//select[contains(.,'HTML\nTXT\nXML')]", "xpath:innerText"]
+      ],
+      "value": "-590.671875,-528"
+    }, {
+      "id": "1c3f2a46-7027-4186-ac14-edd9fac079da",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "name=cmbTpExibicao",
+      "targets": [
+        ["name=cmbTpExibicao", "name"],
+        ["css=.caixas:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='cmbTpExibicao']", "xpath:attributes"],
+        ["xpath=//tr[12]/td/select", "xpath:position"],
+        ["xpath=//select[contains(.,'HTML\nTXT\nXML')]", "xpath:innerText"]
+      ],
+      "value": "-590.671875,-528"
+    }, {
+      "id": "af73e3bf-edf5-4944-b83c-76b0c68ec023",
+      "comment": "",
+      "command": "click",
+      "target": "name=cmbTpExibicao",
+      "targets": [
+        ["name=cmbTpExibicao", "name"],
+        ["css=.caixas:nth-child(4)", "css:finder"],
+        ["xpath=//select[@name='cmbTpExibicao']", "xpath:attributes"],
+        ["xpath=//tr[12]/td/select", "xpath:position"],
+        ["xpath=//select[contains(.,'HTML\nTXT\nXML')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd27eeb8-728f-4e62-a5eb-2a922953033c",
+      "comment": "",
+      "command": "click",
+      "target": "name=btnConsultar",
+      "targets": [
+        ["name=btnConsultar", "name"],
+        ["css=.botoes:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='btnConsultar']", "xpath:attributes"],
+        ["xpath=//tr[12]/td/input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9fd3a33-d95b-42ad-900c-a69440677308",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=O resultado será enviado para sua caixa de mensagens do ATF. Clique aqui para acessá-la.",
+      "targets": [
+        ["linkText=O resultado será enviado para sua caixa de mensagens do ATF. Clique aqui para acessá-la.", "linkText"],
+        ["css=i > a", "css:finder"],
+        ["xpath=//a[contains(text(),'O resultado será enviado para sua caixa de mensagens do ATF. Clique aqui para acessá-la.')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '../seg/SEGf_MinhasMensagens.do')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'O resultado será enviado para sua caixa de mensagens do ATF. Clique aqui para acessá-la.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c6127fbf-4703-4c6a-adf2-3714d3462b5f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.onLight > td:nth-child(4) > a",
+      "targets": [
+        ["css=.onLight > td:nth-child(4) > a", "css:finder"],
+        ["xpath=(//a[contains(@href, \"javascript:abrirFilhas('24649128',4)\")])[3]", "xpath:href"],
+        ["xpath=//tr[5]/td[4]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a4690dc4-e859-43b5-8d41-17a5987648a2",
+      "comment": "",
+      "command": "click",
+      "target": "name=btnNovas",
+      "targets": [
+        ["name=btnNovas", "name"],
+        ["css=.botoes:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='btnNovas']", "xpath:attributes"],
+        ["xpath=//td/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "404958e6-4648-4550-b554-28cae1539faa",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "name=btnNovas",
+      "targets": [
+        ["name=btnNovas", "name"],
+        ["css=.botoes:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='btnNovas']", "xpath:attributes"],
+        ["xpath=//td/input[2]", "xpath:position"]
+      ],
+      "value": "34.890625,15"
+    }, {
+      "id": "78f1b594-3eb2-44a7-a30a-c92995a48908",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "name=btnNovas",
+      "targets": [
+        ["name=btnNovas", "name"],
+        ["css=.botoes:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='btnNovas']", "xpath:attributes"],
+        ["xpath=//td/input[2]", "xpath:position"]
+      ],
+      "value": "34.890625,15"
+    }, {
+      "id": "2eec43db-d6c5-455e-a71a-235c203cabfc",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "name=btnNovas",
+      "targets": [
+        ["name=btnNovas", "name"],
+        ["css=.botoes:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='btnNovas']", "xpath:attributes"],
+        ["xpath=//td/input[2]", "xpath:position"]
+      ],
+      "value": "34.890625,15"
+    }, {
+      "id": "bbf6ba53-6ebd-45da-a759-fb5a6e3bda07",
+      "comment": "",
+      "command": "click",
+      "target": "name=btnNovas",
+      "targets": [
+        ["name=btnNovas", "name"],
+        ["css=.botoes:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='btnNovas']", "xpath:attributes"],
+        ["xpath=//td/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "19769db4-587f-4d42-933a-bf45a6fb6d4d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.onLight > td:nth-child(4) > a",
+      "targets": [
+        ["css=.onLight > td:nth-child(4) > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'FIS_1456 - Consulta Genérica NFC-e')])[2]", "xpath:link"],
+        ["xpath=(//a[contains(@href, \"javascript:abrirFilhas('24649134',0)\")])[3]", "xpath:href"],
+        ["xpath=//tr[5]/td[4]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aded3ceb-65e0-4b90-a5c9-7b6a7b791d7a",
+      "comment": "",
+      "command": "click",
+      "target": "css=td > a > b",
+      "targets": [
+        ["css=td > a > b", "css:finder"],
+        ["xpath=//a/b", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win8112",
+      "windowTimeout": 2000
+    }, {
+      "id": "af9f4196-e6c9-463f-8b67-e277adaf92c9",
+      "comment": "",
+      "command": "storeWindowHandle",
+      "target": "root",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be1b9ece-70ad-439c-912b-51185c97cded",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win8112}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d3c93d8a-8f55-4548-8dd8-3fab3da2a2b2",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "00b16d73-bb62-4145-9f38-7b9101e457d6",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${root}",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2e549f87-c4e3-4592-853f-c88a170d1f67",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["9a4f1516-b092-435e-b3ad-a6d3e21d30a1"]
+  }],
+  "urls": ["https://www4.receita.pb.gov.br/atf/"],
+  "plugins": []
+}
