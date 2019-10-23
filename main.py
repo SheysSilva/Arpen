@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from datetime import datetime
 
 nfces = open('NFCE.txt','r')
 
@@ -111,14 +112,22 @@ def main(ini, fin):
 	print('FINISH')
 
 
-count = len(lines)%7000
+count = len(lines)%1000
 summ = 0
 ini = 1
-for i in range(7000, len(lines), 7000):
+for i in range(1000, len(lines), 1000):
+	now = datetime.now()
 	fin = i
+	print(now)
 	main(ini, fin)
+	now = datetime.now()
+	print(now)
 	ini = fin
 
+now = datetime.now()
+print(now)
 fin = fin+count
 main(ini, fin)
+now = datetime.now()
+print(now)
 
