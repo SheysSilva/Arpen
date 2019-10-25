@@ -11,23 +11,35 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
 from datetime import datetime
+from selenium.common.exceptions import NoSuchElementException
 
-nfces = open('NFCE.txt','r')
+nfces = open('Lista Dirceu.txt','r')
 
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome('/snap/bin/chromium.chromedriver')
 
 lines = nfces.readlines()
 
 def addKeys():
-
-	for i in range(1, len(lines)):
+	i = 1
+	while i < len(lines):
 		print(i)
-		nfce = lines[i].split('|')[0]
-		driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(nfce)
+		nfce = lines[i]#split('|')[0]
+		try:
+			driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(nfce)
+		except NoSuchElementException:
+			i-=i
+			print('err')
 		driver.find_element(By.NAME, "btnAdicionar").click()
+		i+=1
+		
 
-def addKeys(ini, fin):
+def addKey(ini, fin):
 	print(ini, fin)
 	for i in range(ini, fin):
 		print(i)
@@ -54,15 +66,15 @@ def message():
 	time.sleep(20)
 
 	tr =  driver.find_elements_by_css_selector("tr")
-	strg = 'FIS_1484 - Consulta de NFC-e por Emitente '
+	strg = 'FIS_1456 - Consulta'
 	i = 3
 	if verify():
 		while i < (len(tr)-2):
 			td = tr[i]
 			list = td.text.split()
 			txt = ''
-			if len(list) >= 7:
-				for i in range(7):
+			if len(list) >= 3:
+				for i in range(3):
 					txt = txt + str(list[i]) + " "
 
 				ID = driver.find_element_by_css_selector('a').get_attribute('href').encode("utf-8");
@@ -76,8 +88,6 @@ def message():
 						driver.get(link)
 						break	
 			i+=1
-	else:
-		message()
 
 def archive():
 	tr =  driver.find_elements_by_css_selector("tr")
@@ -110,20 +120,37 @@ def main(ini, fin):
 	driver.get(nfce)
 
 
-	#addKeys(ini, fin)
-	test()
+	addKey(ini, fin)
+	#test()
 
 	select = Select(driver.find_element_by_name('cmbTpExibicao'))
-	select.select_by_visible_text("TXT (produtos)")
+	select.select_by_visible_text("XML")
 
 	driver.find_element(By.NAME, 'btnConsultar').click() 
-
-	message()
-	archive()
-
-	driver.find_element(By.TAG_NAME, 'a').click();
+	#message()
+	#archive()
+	#driver.find_element(By.TAG_NAME, 'a').click();
 	print('FINISH')
 
+count = len(lines)%64
+summ = 0
 
-main(0,0)
+list = [12, 13]
+for index in list:
+	now = datetime.now()
+	ini = index*64
+	fin = ini + 63
+	print(now)
+	err = True
+	main(ini, fin)
+	now = datetime.now()
+	print(now)
+	ini = fin
+
+now = datetime.now()
+print(now)
+fin = fin+count
+main(ini, fin)
+now = datetime.now()
+print(now)
 

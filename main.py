@@ -11,23 +11,35 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
 from datetime import datetime
+from selenium.common.exceptions import NoSuchElementException
 
 nfces = open('NFCE.txt','r')
 
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome('/snap/bin/chromium.chromedriver')
 
 lines = nfces.readlines()
 
 def addKeys():
-
-	for i in range(1, len(lines)):
+	i = 1
+	while i < len(lines):
 		print(i)
 		nfce = lines[i].split('|')[0]
-		driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(nfce)
+		try:
+			driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(nfce)
+		except NoSuchElementException:
+			i-=i
+			print('err')
 		driver.find_element(By.NAME, "btnAdicionar").click()
+		i+=1
+		
 
-def addKeys(ini, fin):
+def addKey(ini, fin):
 	print(ini, fin)
 	for i in range(ini, fin):
 		print(i)
@@ -56,29 +68,40 @@ def message():
 	tr =  driver.find_elements_by_css_selector("tr")
 	strg = 'FIS_1484 - Consulta de NFC-e por Emitente '
 	i = 3
-	while i < (len(tr)-2):
-		td = tr[i]
-		list = td.text.split()
-		txt = ''
-		if len(list) >= 7:
-			for i in range(7):
-				txt = txt + str(list[i]) + " "
+	if verify():
+		while i < (len(tr)-2):
+			td = tr[i]
+			list = td.text.split()
+			txt = ''
+			if len(list) >= 7:
+				for i in range(7):
+					txt = txt + str(list[i]) + " "
 
-			ID = driver.find_element_by_css_selector('a').get_attribute('href').encode("utf-8");
-			if ID == "":
-				i-=1;
-			else:
-				list = ID.split("'")
-				link = 'https://www4.receita.pb.gov.br/atf/seg/SEGf_MinhasMensagens.do?hidsqMensagem='+list[1]
+				ID = driver.find_element_by_css_selector('a').get_attribute('href').encode("utf-8");
+				if ID == "":
+					i-=1;
+				else:
+					list = ID.split("'")
+					link = 'https://www4.receita.pb.gov.br/atf/seg/SEGf_MinhasMensagens.do?hidsqMensagem='+list[1]
 
-				if strg == txt:
-					driver.get(link)
-					break	
-		i+=1
+					if strg == txt:
+						driver.get(link)
+						break	
+			i+=1
 
 def archive():
 	tr =  driver.find_elements_by_css_selector("tr")
 	tr[5].click()
+
+def verify():
+	imgs = driver.find_elements_by_css_selector('img')
+	count = 0
+	for img in imgs:
+		img = img.get_attribute('src').encode("utf-8");
+		if img == 'https://www4.receita.pb.gov.br/atf/imagens/clips.gif' and count == 1:
+			return True
+		count+=1
+	return False
 
 def main(ini, fin):
 	driver.get("https://www4.receita.pb.gov.br/atf/")
@@ -97,7 +120,7 @@ def main(ini, fin):
 	driver.get(nfce)
 
 
-	addKeys(ini, fin)
+	addKey(ini, fin)
 	#test()
 
 	select = Select(driver.find_element_by_name('cmbTpExibicao'))
@@ -112,14 +135,21 @@ def main(ini, fin):
 	print('FINISH')
 
 
-count = len(lines)%1000
+count = len(lines)%64
 summ = 0
 ini = 1
-for i in range(1000, len(lines), 1000):
+for i in range(64, len(lines), 64):
 	now = datetime.now()
 	fin = i
 	print(now)
-	main(ini, fin)
+	err = True
+	while err:
+		try:
+			main(ini, fin)
+			err = False
+		except NoSuchElementException:
+			err = True
+			print('err')
 	now = datetime.now()
 	print(now)
 	ini = fin
