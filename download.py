@@ -33,34 +33,54 @@ def logar():
 	driver.find_element(By.NAME, "btnAvancar").click()
 	time.sleep(5)
 	
-def message():
-	tr =  driver.find_elements_by_css_selector("tr")
+def message(i):
+	tbody =  driver.find_elements_by_css_selector("tbody")
 	strg = 'FIS_1484 - Consulta de NFC-e por Emitente '
-	i = 3
-	if verify():
-		while i < (len(tr)-2):
-			td = tr[i]
-			list = td.text.split()
+	count = 0
+	for tr in tbody:
+		count+=1
+		if count >= 3:
+			list = tr.text.split()
 			txt = ''
 			if len(list) >= 7:
 				for i in range(7):
 					txt = txt + str(list[i]) + " "
 
 				ID = driver.find_element_by_css_selector('a').get_attribute('href').encode("utf-8");
+				print(ID)
 				if ID == "":
-					i-=1;
-				else:
-					list = ID.split("'")
-					link = 'https://www4.receita.pb.gov.br/atf/seg/SEGf_MinhasMensagens.do?hidsqMensagem='+list[1]
+					message(i)
+				#else:
+				#	list = ID.split("'")
+				#	link = 'https://www4.receita.pb.gov.br/atf/seg/SEGf_MinhasMensagens.do?hidsqMensagem='+list[1]
+				#	if strg == txt:
+				#		driver.get(link)
 
-					if strg == txt:
-						driver.get(link)
-						break	
-			i+=1
 
-def archive():
-	tr =  driver.find_elements_by_css_selector("tr")
-	tr[5].click()
+def listIds():
+	Ids = []
+	table_id = driver.find_element(By.CLASS_NAME, 'fontePadrao')
+	rows = table_id.find_elements(By.TAG_NAME, "a") 
+	for row in rows:
+	    id_ = row.get_attribute('href').encode("utf-8")
+	    if len(id_)>0:
+		    ID = id_.split("'")
+		    Ids.append(ID[1])
+	return Ids	
+
+def download(id):    	
+	link = 'https://www4.receita.pb.gov.br/atf/seg/SEGf_MinhasMensagens.do?hidsqMensagem='+id
+	driver.get(link)
+	table_id = driver.find_element(By.CLASS_NAME, 'fontePadrao')
+	el = table_id.find_element(By.TAG_NAME, "a")
+	id_son = el.get_attribute('href').encode("utf-8")
+	ID_son = id_son.split("'")[1]
+	ID_son = int(ID_son)-1
+	print ID_son
+	link = 'https://www4.receita.pb.gov.br/atf/seg/SEGf_LerMensagem.do?hidsqMensagem='+str(ID_son)+'&sqMensagemPai='+id
+	driver.get(link)
+	time.sleep(5)
+	driver.find_element(By.TAG_NAME, 'a').click();
 
 def verify():
 	imgs = driver.find_elements_by_css_selector('img')
@@ -75,10 +95,12 @@ def verify():
 def main():
 	logar()
 	driver.get('https://www4.receita.pb.gov.br/atf/seg/SEGf_MinhasMensagens.do?limparSessao=true')
-	message()
-	archive()
-
-	driver.find_element(By.TAG_NAME, 'a').click();
+	Ids = sorted(set(listIds()))
+	print Ids
+	for id in Ids:
+		print 'P: ' + str(id)
+		download(id)
+		
 	print('FINISH')
 
 

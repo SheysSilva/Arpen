@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 
-nfces = open('NFCE.txt','r')
+nfces = open('key/NFCE.txt','r')
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
@@ -24,6 +24,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome('/snap/bin/chromium.chromedriver')
 
 lines = nfces.readlines()
+type_file = ''
 
 def logar():
 	driver.get("https://www4.receita.pb.gov.br/atf/")
@@ -59,19 +60,35 @@ def test():
 	driver.find_element(By.NAME, "btnAdicionar").click()
 
 def main(ini, fin):
-
 	logar()
 	nfce = 'https://www4.receita.pb.gov.br/atf/fis/FISf_ConsultaGenericaEmitenteNFCe.do?limparSessao=true'
 	driver.get(nfce)
-
 
 	addKey(ini, fin)
 	#test()
 
 	select = Select(driver.find_element_by_name('cmbTpExibicao'))
-	select.select_by_visible_text("TXT (produtos)")
+	select.select_by_visible_text(type_file)
 
 	driver.find_element(By.NAME, 'btnConsultar').click() 
+
+print('Selecione o tipo de arquivo para donwload: \n1. HTML\n2. XML\n3. TXT(produtos)\n4.TXT')
+type_input = int(input('Digite a numeração: '))
+
+while type_input < 1 or type_input > 4:
+	type_input = int(input('Digite a numeração: '))
+
+if type_input == 1:
+	type_file = "HTML"
+
+if type_input == 2: 
+	type_file = "XML"
+
+if type_input == 3: 
+	type_file = "TXT (produtos)"
+
+if type_input == 4: 
+	type_file = "TXT"
 
 count = len(lines)%64
 summ = 0
