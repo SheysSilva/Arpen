@@ -126,7 +126,7 @@ def main(ini, fin):
 	select = Select(driver.find_element_by_name('cmbTpExibicao'))
 	select.select_by_visible_text("XML")
 
-	driver.find_element(By.NAME, 'btnConsultar').click() 
+	#driver.find_element(By.NAME, 'btnConsultar').click() 
 	#message()
 	#archive()
 	#driver.find_element(By.TAG_NAME, 'a').click();
@@ -135,11 +135,11 @@ def main(ini, fin):
 count = len(lines)%64
 summ = 0
 
-list = [12, 13]
+list = [11]
 for index in list:
 	now = datetime.now()
 	ini = index*64
-	fin = ini + 63
+	fin = ini + 64
 	print(now)
 	err = True
 	main(ini, fin)
@@ -147,10 +147,4 @@ for index in list:
 	print(now)
 	ini = fin
 
-now = datetime.now()
-print(now)
-fin = fin+count
-main(ini, fin)
-now = datetime.now()
-print(now)
 
