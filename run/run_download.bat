@@ -1,6 +1,5 @@
-#!/bin/bash
 echo 'Executed'
 cd /
 cd home/sheylong/Documentos/Contagil/contagil-ATF
-python main.py
+python download.py
 echo 'Finish'

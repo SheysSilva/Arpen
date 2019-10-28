@@ -15,7 +15,8 @@ from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 
-nfces = open('Lista Dirceu.txt','r')
+archive = 'key/NFCE.txt' #pasta para leitura dos arquivos
+nfces = open(archive,'r')
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
