@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = 'localhost'
+url = '10.0.25.16'
 port = '8080'
 
 get = requests.get('http://'+url+':'+port+'/chaves/')

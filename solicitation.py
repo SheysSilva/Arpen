@@ -21,7 +21,9 @@ chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome('/snap/bin/chromium.chromedriver')
+Linux = '/snap/bin/chromium.chromedriver'
+Windows = 'C:\\Users\\Sheilla.CONTAGIL2\\Documents\\07. Chrome Driver\\chromedriver_win32\\chromedriver.exe'
+driver = webdriver.Chrome(Windows)
 
 type_file = ''
 
@@ -57,8 +59,8 @@ def main():
 	driver.find_element(By.NAME, 'btnConsultar').click() 
 
 print('Selecione o tipo de arquivo para donwload: \n1. HTML\n2. XML\n3. TXT(produtos)\n4.TXT')
-type_input = int(input('Digite a numeração: '))
-
+#type_input = int(input('Digite a numeração: '))
+type_input = 3
 while type_input < 1 or type_input > 4:
 	type_input = int(input('Digite a numeração: '))
 
