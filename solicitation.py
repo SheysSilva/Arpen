@@ -74,19 +74,20 @@ if type_input == 3:
 if type_input == 4: 
 	type_file = "TXT"
 
-now = datetime.now()
-print(now)
-print('Quantidade de arquivos: ',len(nfces))
-err = True
-while err:
-	try:
-		main()
-		err = False
-	except NoSuchElementException:
-		err = True
-		print('err')
-now = datetime.now()
-print(now)
-put()
+While True:
+	now = datetime.now()
+	print(now)
+	print('Quantidade de arquivos: ',len(nfces))
+	err = True
+	while err:
+		try:
+			main()
+			err = False
+		except NoSuchElementException:
+			err = True
+			print('err')
+	now = datetime.now()
+	print(now)
+	put()
 
 
