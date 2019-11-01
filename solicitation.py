@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 
-nfces = open('key/NFCE.txt','r')
+from config import nfces, put
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
@@ -23,7 +23,6 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome('/snap/bin/chromium.chromedriver')
 
-lines = nfces.readlines()
 type_file = ''
 
 def logar():
@@ -38,34 +37,19 @@ def logar():
 	driver.find_element(By.NAME, "btnAvancar").click()
 	time.sleep(5)
 
-def addKey(ini, fin):
-	print(ini, fin-1)
-	for i in range(ini, fin):
-		print(i)
-		nfce = lines[i].split('|')[0]
+def addKey():
+	for nfce in nfces:
 		print(nfce)
 		driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(nfce)
 		driver.find_element(By.NAME, "btnAdicionar").click()
 
 
-def test():
-	lines = nfces.readlines()
-	driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(lines[1].split('|')[0])
-	driver.find_element(By.NAME, "btnAdicionar").click()
-	driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(lines[2].split('|')[0])
-	driver.find_element(By.NAME, "btnAdicionar").click()
-	driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(lines[3].split('|')[0])
-	driver.find_element(By.NAME, "btnAdicionar").click()
-	driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(lines[3].split('|')[0])
-	driver.find_element(By.NAME, "btnAdicionar").click()
-
-def main(ini, fin):
+def main():
 	logar()
 	nfce = 'https://www4.receita.pb.gov.br/atf/fis/FISf_ConsultaGenericaEmitenteNFCe.do?limparSessao=true'
 	driver.get(nfce)
 
-	addKey(ini, fin)
-	#test()
+	addKey()
 
 	select = Select(driver.find_element_by_name('cmbTpExibicao'))
 	select.select_by_visible_text(type_file)
@@ -90,30 +74,19 @@ if type_input == 3:
 if type_input == 4: 
 	type_file = "TXT"
 
-count = len(lines)%64
-summ = 0
-#Linha 0 é o cabeçalho 
-ini = 1
-for i in range(64, len(lines), 64):
-	now = datetime.now()
-	fin = i
-	print(now)
-	err = True
-	while err:
-		try:
-			main(ini, fin)
-			err = False
-		except NoSuchElementException:
-			err = True
-			print('err')
-	now = datetime.now()
-	print(now)
-	ini = fin
+now = datetime.now()
+print(now)
+print('Quantidade de arquivos: ',len(nfces))
+err = True
+while err:
+	try:
+		main()
+		err = False
+	except NoSuchElementException:
+		err = True
+		print('err')
+now = datetime.now()
+print(now)
+put()
 
-now = datetime.now()
-print(now)
-fin = fin+count
-main(ini, fin)
-now = datetime.now()
-print(now)
 

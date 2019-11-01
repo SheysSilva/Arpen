@@ -100,8 +100,7 @@ def main():
 	for id in Ids:
 		print 'P: ' + str(id)
 		download(id)
-		
-	print('FINISH')
 
+	print('FINISH')
 
 main()
