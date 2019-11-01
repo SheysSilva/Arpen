@@ -14,8 +14,8 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
-
-from config import nfces, setAllStatus
+from random import randint
+from config import getAll
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
@@ -39,19 +39,19 @@ def logar():
 	driver.find_element(By.NAME, "btnAvancar").click()
 	time.sleep(5)
 
-def addKey():
+def addKey(nfces):
 	for nfce in nfces:
 		print(nfce)
 		driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(nfce)
 		driver.find_element(By.NAME, "btnAdicionar").click()
 
 
-def main():
+def main(nfces):
 	logar()
 	nfce = 'https://www4.receita.pb.gov.br/atf/fis/FISf_ConsultaGenericaEmitenteNFCe.do?limparSessao=true'
 	driver.get(nfce)
 
-	addKey()
+	addKey(nfces)
 
 	select = Select(driver.find_element_by_name('cmbTpExibicao'))
 	select.select_by_visible_text(type_file)
@@ -77,6 +77,7 @@ if type_input == 4:
 	type_file = "TXT"
 
 while True:
+	nfces = getAll()
 	now = datetime.now()
 	print(now)
 	print('Quantidade de arquivos: ',len(nfces))
@@ -84,15 +85,16 @@ while True:
 	if len(nfces) > 0:
 		while err:
 			try:
-				main()
+				main(nfces)
 				err = False
 			except NoSuchElementException:
 				err = True
 				print('err')
 		now = datetime.now()
 		print(now)
-		setAllStatus('Using')
 	else:
-		time.sleep(10)
+		seconds = ((randint(15, 21))%7)+10
+		print(seconds)
+		time.sleep(seconds)
 
 

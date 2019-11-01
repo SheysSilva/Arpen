@@ -4,13 +4,10 @@ import json
 url = '10.0.25.16'
 port = '8080'
 
-get = requests.get('http://'+url+':'+port+'/chaves/')
-nfces = get.json()
+def getAll():
+	get = requests.get('http://'+url+':'+port+'/chaves/')
+	return get.json()
 
-def setAllStatus(status):
-	for nfce in nfces:
-		put = requests.put('http://'+url+':'+port+'/chaves/', data={'id': nfce, 'status': str(status)})
-		print(put.json())
 
 def setStatus(id, status):
 	put = requests.put('http://'+url+':'+port+'/chaves/', data={'id': id, 'status': str(status)})
