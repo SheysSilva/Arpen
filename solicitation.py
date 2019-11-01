@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 
-from config import nfces, put
+from config import nfces, setAllStatus
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
@@ -74,20 +74,23 @@ if type_input == 3:
 if type_input == 4: 
 	type_file = "TXT"
 
-While True:
+while True:
 	now = datetime.now()
 	print(now)
 	print('Quantidade de arquivos: ',len(nfces))
 	err = True
-	while err:
-		try:
-			main()
-			err = False
-		except NoSuchElementException:
-			err = True
-			print('err')
-	now = datetime.now()
-	print(now)
-	put()
+	if len(nfces) > 0:
+		while err:
+			try:
+				main()
+				err = False
+			except NoSuchElementException:
+				err = True
+				print('err')
+		now = datetime.now()
+		print(now)
+		setAllStatus('Using')
+	else:
+		time.sleep(10)
 
 
