@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 from random import randint
-from config import getAll
+from config import getKeys
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
@@ -77,7 +77,7 @@ if type_input == 4:
 	type_file = "TXT"
 
 while True:
-	nfces = getAll()
+	nfces = getKeys()
 	now = datetime.now()
 	print(now)
 	print('Quantidade de arquivos: ',len(nfces))
