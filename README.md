@@ -15,13 +15,13 @@ pip install datatime
 
 > Abra o arquivo e mude a rota de acesso ao seu projeto.
 
-Acesse a pasta [install](/install) e execute o arquivo install.sh
+Acesse a pasta [install](/src/install) e execute o arquivo install.sh
 
 ### Instalação automatica (Windows)
 
 > Abra o arquivo e mude a rota de acesso ao seu projeto.
 
-Acesse a pasta [install](/install) e execute o arquivo install.bat
+Acesse a pasta [install](/src/install) e execute o arquivo install.bat
 
 _Obs: Caso não funcione a instalação automatica no windows, tente por linha de comando no terminal após realizar as devidas configurações no sistema._
 
