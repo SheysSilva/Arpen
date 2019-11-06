@@ -15,7 +15,7 @@ from selenium.webdriver.chrome.options import Options
 from datetime import datetime
 from selenium.common.exceptions import NoSuchElementException
 from random import randint
-from config import getKeys
+from config import getKeys, setUrl, getUrl
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
@@ -77,6 +77,15 @@ if type_input == 4:
 	type_file = "TXT"
 
 while True:
+	isChange = raw_input("Deseja mudar a url? (S) or (N): ")
+
+	if isChange == 'S' or isChange == 's' :
+		url = raw_input("Insira o endereco da url: ")
+		setUrl(str(url))
+		print('A url foi alterada', getUrl())
+	else:
+		print('A url nao foi modificada')
+
 	nfces = getKeys()
 	now = datetime.now()
 	print(now)
