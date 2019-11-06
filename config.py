@@ -8,7 +8,6 @@ def getAll():
 	get = requests.get('http://'+url+':'+port+'/chaves/')
 	return get.json()
 
-
 def setStatus(id, status):
 	put = requests.put('http://'+url+':'+port+'/chaves/', data={'id': id, 'status': str(status)})
 	print(put.json())

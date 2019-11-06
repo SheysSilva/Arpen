@@ -23,7 +23,7 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 Linux = '/snap/bin/chromium.chromedriver'
 Windows = 'C:\\Users\\Sheilla.CONTAGIL2\\Documents\\07. Chrome Driver\\chromedriver_win32\\chromedriver.exe'
-driver = webdriver.Chrome(Windows)
+driver = webdriver.Chrome(Linux)
 
 type_file = ''
 
@@ -81,6 +81,7 @@ while True:
 	now = datetime.now()
 	print(now)
 	print('Quantidade de arquivos: ',len(nfces))
+	print(nfces)
 	err = True
 	if len(nfces) > 0:
 		while err:

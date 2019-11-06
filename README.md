@@ -30,37 +30,17 @@ _Obs: Caso não funcione a instalação automatica no windows, tente por linha d
 Acesse o terminal do seu sistema operacional e rode o comando abaixo.
 
 ```
-python solicitation.py
+python app.py
 ```
 
 Ou execute os seguintes arquivos abaixo de acordo com o seu sistema operacional.
 
 ###### Linux
 
-Acesse a pasta [run](/run) e execute o arquivo run_solicitation.sh
+Acesse a pasta [run](/src/run), altere o caminho onde se encontra o arquivo e execute o arquivo run.sh
 
 ###### Windows
 
-Acesse a pasta [run](/run) e execute o arquivo run_solicitation.bat
-
-
-### Para fazer o download dos arquivos solicitados
-
-Acesse o terminal do seu sistema operacional e rode o comando abaixo.
-
-```
-python download.py
-```
-
-Ou execute os seguintes arquivos abaixo de acordo com o seu sistema operacional.
-
-###### Linux
-
-Acesse a pasta [run](/run) e execute o arquivo run_download.sh
-
-###### Windows
-
-Acesse a pasta [run](/run) e execute o arquivo run_download.bat
-
+Acesse a pasta [run](/src/run), altere o caminho onde se encontra o arquivo e execute o arquivo run.bat
 
 ###### Site: [Contagil](http://www.contagilpb.com.br/)
