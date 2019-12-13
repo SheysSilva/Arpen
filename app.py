@@ -13,9 +13,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 from datetime import datetime
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import *
 from random import randint
-from config import getKeys, setUrl, getUrl
+from config import *
 
 chrome_options = Options()
 chrome_options.add_argument('--headless')
@@ -40,9 +40,10 @@ def logar():
 	time.sleep(5)
 
 def addKey(nfces):
+	nfces = nfces.json()
 	for nfce in nfces:
-		print(nfce)
-		driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(nfce)
+		print(nfce['id'])
+		driver.find_element(By.NAME, "edtNrChaveAcesso").send_keys(nfce['id'])
 		driver.find_element(By.NAME, "btnAdicionar").click()
 
 
@@ -58,11 +59,7 @@ def main(nfces):
 
 	driver.find_element(By.NAME, 'btnConsultar').click() 
 
-print('Selecione o tipo de arquivo para donwload: \n1. HTML\n2. XML\n3. TXT(produtos)\n4.TXT')
-#type_input = int(input('Digite a numeração: '))
 type_input = 3
-while type_input < 1 or type_input > 4:
-	type_input = int(input('Digite a numeração: '))
 
 if type_input == 1:
 	type_file = "HTML"
@@ -77,34 +74,18 @@ if type_input == 4:
 	type_file = "TXT"
 
 while True:
-	isChange = raw_input("Deseja mudar a url? (S) or (N): ")
-
-	if isChange == 'S' or isChange == 's' :
-		url = raw_input("Insira o endereco da url: ")
-		setUrl(str(url))
-		print('A url foi alterada', getUrl())
-	else:
-		print('A url nao foi modificada')
-
-	nfces = getKeys()
+	nfces = getkeysFree()
 	now = datetime.now()
 	print(now)
-	print('Quantidade de arquivos: ',len(nfces))
-	print(nfces)
 	err = True
-	if len(nfces) > 0:
-		while err:
-			try:
-				main(nfces)
-				err = False
-			except NoSuchElementException:
-				err = True
-				print('err')
-		now = datetime.now()
-		print(now)
-	else:
-		seconds = ((randint(15, 21))%7)+10
-		print(seconds)
-		time.sleep(seconds)
+	while err:
+		try:
+			main(nfces)
+			err = False
+		except (NoSuchElementException, TimeoutException, WebDriverException):
+			err = True
+			print('err')
+	now = datetime.now()
+	print(now)
 
 
